@@ -1,0 +1,30 @@
+#!/bin/bash
+
+cd /home/yamasita/slack-backup/
+
+function jikkou {
+    echo $1 start
+    $1
+    if [ $? != 0 ];then
+        sleep 1h
+        $1
+    fi
+    if [ $? != 0 ];then
+        sleep 1h
+        $1
+    fi
+    if [ $? != 0 ];then
+        echo "Error"
+        exit 1
+    fi
+}
+jikkou ./bin/000_prepare.sh
+jikkou ./bin/001_get_channel_list.sh
+jikkou ./bin/002_create_channels_list.pl
+jikkou ./bin/003_get_user_list.sh
+jikkou ./bin/004_create_user_list.pl
+jikkou ./bin/005_create_channel_history.pl
+jikkou ./bin/006_delete_blank_channel.sh
+jikkou ./bin/007_create_archive.pl
+jikkou ./bin/008_create_mail.pl
+jikkou ./bin/009_sendmail.sh

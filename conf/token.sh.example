@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+
+API_TOKEN=xoxp-xxxxxxxxxx-xxxxxxxxxx-xxxxxxxxxx-xxxxxx
+MAIL_FROM=member@example.com
+MAIL_TO=member@example.com
